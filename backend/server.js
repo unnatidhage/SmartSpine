@@ -12,13 +12,17 @@ const userRoutes = require('./routes/user');
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
-  cors: { origin: 'smart-spine-ic68.vercel.app', methods: ['GET', 'POST'] }
+  cors: { 
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true
+  }
 });
-
 app.use(express.json());
 app.use(cors({
-  origin: 'smart-spine-ic68.vercel.app'
-}));
+  origin: '*',
+  credentials: true
+}));;
 
 // Make io accessible in routes
 app.set('io', io);
