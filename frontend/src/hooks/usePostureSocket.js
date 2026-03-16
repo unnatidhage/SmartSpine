@@ -9,7 +9,7 @@ export function usePostureSocket(userId) {
   useEffect(() => {
     if (!userId) return;
 
-    socketRef.current = io('/', { transports: ['websocket'] });
+    socketRef.current = io('https://smartspine-backend.onrender.com', { transports: ['websocket'] });
 
     socketRef.current.on('connect', () => setConnected(true));
     socketRef.current.on('disconnect', () => setConnected(false));
