@@ -18,7 +18,7 @@ export default function Dashboard() {
   const { user, logout, updateUser } = useAuth();
   const { latest, connected } = usePostureSocket(user?._id);
 
-  const [history, setHistory] = useState([]);
+  const [, setHistory] = useState([]);
   const [chartData, setChartData] = useState([]);
   const [stats, setStats] = useState(null);
   const [showCalib, setShowCalib] = useState(false);
