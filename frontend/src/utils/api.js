@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API = axios.create({ baseURL: '/api' });
+const API = axios.create({ baseURL: 'https://smartspine-backend.onrender.com/api' });
 
 // Attach JWT automatically
 API.interceptors.request.use(cfg => {
