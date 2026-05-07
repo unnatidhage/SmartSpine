@@ -10,39 +10,78 @@ const router = express.Router();
 //   - A TensorFlow.js model trained on labeled posture data
 //   - An OpenAI/Claude API call for richer contextual feedback
 //   - A Python ML microservice (scikit-learn, PyTorch) via HTTP
+// const analyzePosture = (flexValue, calibrationValue) => {
+//   const diff = Math.abs(flexValue - calibrationValue);
+//   const deviation = (diff / calibrationValue) * 100;
+
+//   if (diff < 20) {
+//     return {
+//       label: 'Excellent',
+//       score: Math.round(95 - deviation * 0.1),
+//       advice: 'Great posture! Keep it up.',
+//       riskLevel: 'low',
+//       color: '#22c55e'
+//     };
+//   } else if (diff < 50) {
+//     return {
+//       label: 'Good',
+//       score: Math.round(80 - deviation * 0.2),
+//       advice: 'Minor curvature detected. Try to sit upright.',
+//       riskLevel: 'medium',
+//       color: '#f59e0b'
+//     };
+//   } else if (diff < 100) {
+//     return {
+//       label: 'Poor – Forward Head',
+//       score: Math.round(55 - deviation * 0.1),
+//       advice: 'Forward head posture detected. Roll shoulders back.',
+//       riskLevel: 'high',
+//       color: '#f97316'
+//     };
+//   } else {
+//     return {
+//       label: 'Critical – Slouching',
+//       score: Math.max(10, Math.round(30 - deviation * 0.05)),
+//       advice: 'Severe slouching! Risk of sciatica. Stand or adjust immediately.',
+//       riskLevel: 'critical',
+//       color: '#ef4444'
+//     };
+//   }
+// };
+// REPLACE the analyzePosture function with this:
 const analyzePosture = (flexValue, calibrationValue) => {
   const diff = Math.abs(flexValue - calibrationValue);
   const deviation = (diff / calibrationValue) * 100;
 
-  if (diff < 20) {
+  if (diff < 15) {
     return {
       label: 'Excellent',
       score: Math.round(95 - deviation * 0.1),
-      advice: 'Great posture! Keep it up.',
+      advice: 'Perfect neck alignment! Keep your ears above shoulders.',
       riskLevel: 'low',
       color: '#22c55e'
     };
-  } else if (diff < 50) {
+  } else if (diff < 40) {
     return {
-      label: 'Good',
-      score: Math.round(80 - deviation * 0.2),
-      advice: 'Minor curvature detected. Try to sit upright.',
+      label: 'Mild Forward Head',
+      score: Math.round(78 - deviation * 0.2),
+      advice: 'Slight forward head detected. Tuck chin gently back.',
       riskLevel: 'medium',
       color: '#f59e0b'
     };
-  } else if (diff < 100) {
+  } else if (diff < 80) {
     return {
-      label: 'Poor – Forward Head',
-      score: Math.round(55 - deviation * 0.1),
-      advice: 'Forward head posture detected. Roll shoulders back.',
+      label: 'Moderate Neck Slouch',
+      score: Math.round(52 - deviation * 0.1),
+      advice: 'Moderate neck slouching. Roll shoulders back and lift head.',
       riskLevel: 'high',
       color: '#f97316'
     };
   } else {
     return {
-      label: 'Critical – Slouching',
-      score: Math.max(10, Math.round(30 - deviation * 0.05)),
-      advice: 'Severe slouching! Risk of sciatica. Stand or adjust immediately.',
+      label: 'Critical – Neck Strain',
+      score: Math.max(10, Math.round(25 - deviation * 0.05)),
+      advice: 'Severe neck strain! Risk of cervical spondylosis. Correct immediately!',
       riskLevel: 'critical',
       color: '#ef4444'
     };
