@@ -96,7 +96,7 @@ export default function Dashboard() {
   // }, [connected, user]);
   // REPLACE the demo mode useEffect with this:
 useEffect(() => {
-    if (connected) return;
+    // if (connected) return;
     const interval = setInterval(() => {
       const mockFlex = Math.floor(Math.random() * 160) + 160;
       const calibVal = user?.calibrationValue || 200;
