@@ -28,10 +28,17 @@ export default function CalibrationModal({ onDone, onClose }) {
         {step === 0 && (
           <>
             <h2 style={h2}>Calibrate Your Sensor</h2>
+            // <p style={p}>
+            //   Sit upright with <strong style={{ color: 'var(--accent)' }}>perfect posture</strong>.
+            //   This reading will be your personal baseline. All future readings will compare against it.
+            // </p>
             <p style={p}>
-              Sit upright with <strong style={{ color: 'var(--accent)' }}>perfect posture</strong>.
-              This reading will be your personal baseline. All future readings will compare against it.
+                Sit upright with your <strong style={{ color: 'var(--accent)' }}>neck straight</strong> 
+                and ears directly above shoulders, chin parallel to floor. 
+                This neck position will be your personal baseline.
             </p>
+            
+            
             <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' fill='%230d1526'/%3E%3Cpath d='M60 20 L60 80 M45 35 Q60 20 75 35 M48 60 Q60 50 72 60 M50 80 Q60 90 70 80' stroke='%2300e5ff' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='60' cy='15' r='8' fill='%2300e5ff' opacity='0.3'/%3E%3C/svg%3E"
               alt="posture" style={{ display: 'block', margin: '20px auto' }} />
             <button style={btnPrimary} onClick={() => setStep(1)}>I'm Sitting Correctly →</button>
@@ -40,9 +47,15 @@ export default function CalibrationModal({ onDone, onClose }) {
         {step === 1 && (
           <>
             <h2 style={h2}>Enter Sensor Reading</h2>
+            // <p style={p}>
+            //   Check your Arduino Serial Monitor and enter the <strong style={{ color: 'var(--accent)' }}>flex sensor value</strong> shown while sitting upright.
+            // </p>
             <p style={p}>
-              Check your Arduino Serial Monitor and enter the <strong style={{ color: 'var(--accent)' }}>flex sensor value</strong> shown while sitting upright.
-            </p>
+               Check your Arduino Serial Monitor and enter the{' '}
+               <strong style={{ color: 'var(--accent)' }}>flex sensor value</strong>{' '}
+                shown while holding your neck straight — ears above shoulders.
+             </p>
+          
             <div style={{ margin: '20px 0' }}>
               <label style={label}>Flex Value (0 – 1023)</label>
               <input
