@@ -68,26 +68,70 @@ export default function Dashboard() {
   }, [latest]);
 
   // ── Demo mode: simulate sensor if not calibrated / no real device
-  useEffect(() => {
-    if (connected) return; // real device connected, skip demo
+  // useEffect(() => {
+  //   if (connected) return; // real device connected, skip demo
+  //   const interval = setInterval(() => {
+  //     const mockFlex = Math.floor(Math.random() * 160) + 160; // 160-320
+  //     const calibVal = user?.calibrationValue || 200;
+  //     const diff = Math.abs(mockFlex - calibVal);
+  //     let score, status, advice;
+  //     if (diff < 20)      { score = 90 + Math.floor(Math.random()*8); status = 'Excellent';             advice = 'Great posture! Keep it up.'; }
+  //     else if (diff < 50) { score = 70 + Math.floor(Math.random()*12); status = 'Good';                advice = 'Minor curvature. Sit upright.'; }
+  //     else if (diff < 100){ score = 45 + Math.floor(Math.random()*15); status = 'Poor – Forward Head'; advice = 'Forward head posture. Roll shoulders back.'; }
+  //     else                { score = 20 + Math.floor(Math.random()*20); status = 'Critical – Slouching'; advice = 'Severe slouching! Risk of sciatica. Adjust now!'; }
+
+  //     const point = { time: new Date().toLocaleTimeString(), score, flex: mockFlex };
+  //     setChartData(prev => [...prev.slice(-(MAX_POINTS - 1)), point]);
+  //     setAiAdvice(advice);
+
+  //     if (status === 'Critical – Slouching') {
+  //       setAlerts(prev => [{
+  //         id: Date.now(),
+  //         msg: `⚠️ Critical slouching at ${new Date().toLocaleTimeString()}`,
+  //         color: 'var(--red)'
+  //       }, ...prev].slice(0, 5));
+  //     }
+  //   }, 2500);
+  //   return () => clearInterval(interval);
+  // }, [connected, user]);
+  // REPLACE the demo mode useEffect with this:
+useEffect(() => {
+    if (connected) return;
     const interval = setInterval(() => {
-      const mockFlex = Math.floor(Math.random() * 160) + 160; // 160-320
+      const mockFlex = Math.floor(Math.random() * 160) + 160;
       const calibVal = user?.calibrationValue || 200;
       const diff = Math.abs(mockFlex - calibVal);
       let score, status, advice;
-      if (diff < 20)      { score = 90 + Math.floor(Math.random()*8); status = 'Excellent';             advice = 'Great posture! Keep it up.'; }
-      else if (diff < 50) { score = 70 + Math.floor(Math.random()*12); status = 'Good';                advice = 'Minor curvature. Sit upright.'; }
-      else if (diff < 100){ score = 45 + Math.floor(Math.random()*15); status = 'Poor – Forward Head'; advice = 'Forward head posture. Roll shoulders back.'; }
-      else                { score = 20 + Math.floor(Math.random()*20); status = 'Critical – Slouching'; advice = 'Severe slouching! Risk of sciatica. Adjust now!'; }
+
+      if (diff < 15)      { 
+        score = 90 + Math.floor(Math.random()*8); 
+        status = 'Excellent';             
+        advice = 'Perfect neck alignment! Ears above shoulders.'; 
+      }
+      else if (diff < 40) { 
+        score = 70 + Math.floor(Math.random()*12); 
+        status = 'Mild Forward Head';                
+        advice = 'Slight forward head. Tuck chin back gently.'; 
+      }
+      else if (diff < 80) { 
+        score = 45 + Math.floor(Math.random()*15); 
+        status = 'Moderate Neck Slouch'; 
+        advice = 'Moderate neck slouch. Lift head and roll shoulders.'; 
+      }
+      else                { 
+        score = 20 + Math.floor(Math.random()*20); 
+        status = 'Critical – Neck Strain'; 
+        advice = 'Severe neck strain! Risk of cervical spondylosis. Fix now!'; 
+      }
 
       const point = { time: new Date().toLocaleTimeString(), score, flex: mockFlex };
       setChartData(prev => [...prev.slice(-(MAX_POINTS - 1)), point]);
       setAiAdvice(advice);
 
-      if (status === 'Critical – Slouching') {
+      if (status === 'Critical – Neck Strain') {
         setAlerts(prev => [{
           id: Date.now(),
-          msg: `⚠️ Critical slouching at ${new Date().toLocaleTimeString()}`,
+          msg: `⚠️ Critical neck strain at ${new Date().toLocaleTimeString()}`,
           color: 'var(--red)'
         }, ...prev].slice(0, 5));
       }
