@@ -223,7 +223,7 @@ useEffect(() => {
           <div style={styles.chartHeader}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
               <TrendingUp size={18} color="var(--accent)" />
-              <h3 style={styles.chartTitle}>Real-Time Spine Curvature Graph</h3>
+              <h3 style={styles.chartTitle}>Real-Time Neck Curvature Graph</h3>
             </div>
             <p style={{ fontSize: '12px', color: 'var(--text-muted)' }}>Last {MAX_POINTS} readings · Updates every ~2.5s</p>
           </div>
@@ -265,12 +265,21 @@ useEffect(() => {
 
           {/* Info panel */}
           <div style={styles.infoCard}>
-            <h3 style={{ ...styles.chartTitle, marginBottom: '14px' }}>🦴 About Your Spine</h3>
+            <h3 style={{ ...styles.chartTitle, marginBottom: '14px' }}>🦴 About Your Neck</h3>
             {[
-              { title: 'Sciatica Risk', body: 'Poor posture sustained over time can cause disc compression, leading to sciatica — pain radiating from lower back to legs.' },
-              { title: 'Forward Head', body: 'Every inch of head-forward shift adds ~10 lbs of load on cervical spine. Keep ears aligned with shoulders.' },
-              { title: 'Sway Back', body: 'Rounded shoulders + sway back increases lumbar curvature. Core strengthening and conscious sitting help.' }
-            ].map(item => (
+               { 
+                  title: 'Cervical Spondylosis Risk', 
+                  body: 'Sustained forward head posture adds up to 60 lbs of load on cervical spine. Over time this causes disc degeneration and cervical spondylosis.' 
+               },
+               { 
+                  title: 'Forward Head Posture', 
+                  body: 'Every inch your head moves forward adds 10 lbs of stress on your neck. Keep ears aligned directly above shoulders at all times.' 
+                },
+                { 
+                   title: 'Text Neck Syndrome', 
+                   body: 'Looking down at phone or screen causes text neck — chronic neck pain from prolonged flexion. SmartSpine detects and alerts you in real time.' 
+                 }
+               ].map(item => (
               <div key={item.title} style={styles.infoItem}>
                 <p style={{ fontSize: '13px', fontWeight: '700', color: 'var(--accent)', marginBottom: '4px' }}>{item.title}</p>
                 <p style={{ fontSize: '13px', color: 'var(--text-muted)', lineHeight: 1.5 }}>{item.body}</p>
@@ -285,11 +294,17 @@ useEffect(() => {
   );
 }
 
+// function getStatusFromScore(score) {
+//   if (score >= 85) return 'Excellent';
+//   if (score >= 65) return 'Good';
+//   if (score >= 40) return 'Poor – Forward Head';
+//   return 'Critical – Slouching';
+// }
 function getStatusFromScore(score) {
   if (score >= 85) return 'Excellent';
-  if (score >= 65) return 'Good';
-  if (score >= 40) return 'Poor – Forward Head';
-  return 'Critical – Slouching';
+  if (score >= 65) return 'Mild Forward Head';
+  if (score >= 40) return 'Moderate Neck Slouch';
+  return 'Critical – Neck Strain';
 }
 
 const styles = {
