@@ -1,10 +1,17 @@
 import React from 'react';
 
+// const CONFIG = {
+//   'Excellent':         { color: '#22c55e', bg: 'rgba(34,197,94,0.12)',  icon: '🟢' },
+//   'Good':              { color: '#f59e0b', bg: 'rgba(245,158,11,0.12)', icon: '🟡' },
+//   'Poor – Forward Head': { color: '#f97316', bg: 'rgba(249,115,22,0.12)', icon: '🟠' },
+//   'Critical – Slouching': { color: '#ef4444', bg: 'rgba(239,68,68,0.12)', icon: '🔴' },
+// };
+// REPLACE CONFIG object with this:
 const CONFIG = {
-  'Excellent':         { color: '#22c55e', bg: 'rgba(34,197,94,0.12)',  icon: '🟢' },
-  'Good':              { color: '#f59e0b', bg: 'rgba(245,158,11,0.12)', icon: '🟡' },
-  'Poor – Forward Head': { color: '#f97316', bg: 'rgba(249,115,22,0.12)', icon: '🟠' },
-  'Critical – Slouching': { color: '#ef4444', bg: 'rgba(239,68,68,0.12)', icon: '🔴' },
+  'Excellent':              { color: '#22c55e', bg: 'rgba(34,197,94,0.12)',   icon: '🟢' },
+  'Mild Forward Head':      { color: '#f59e0b', bg: 'rgba(245,158,11,0.12)', icon: '🟡' },
+  'Moderate Neck Slouch':   { color: '#f97316', bg: 'rgba(249,115,22,0.12)', icon: '🟠' },
+  'Critical – Neck Strain': { color: '#ef4444', bg: 'rgba(239,68,68,0.12)',  icon: '🔴' },
 };
 
 export default function StatusBadge({ status, large }) {
