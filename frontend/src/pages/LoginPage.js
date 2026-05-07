@@ -45,8 +45,6 @@ export default function LoginPage() {
             </svg>
           </div>
           <div>
-            // <h1 style={styles.title}>SmartSpine <span style={{ color: 'var(--accent)' }}>AI</span></h1>
-            // <p style={styles.subtitle}>Intelligent posture monitoring vest</p>
             <h1 style={styles.title}>Smart Neck <span style={{ color: 'var(--accent)' }}>AI</span></h1>
             <p style={styles.subtitle}>Intelligent neck posture monitoring vest</p>
           </div>
